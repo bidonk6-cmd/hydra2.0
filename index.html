@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HYDRA — маркетплейс</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <section id="auth" class="auth" aria-label="Вход в аккаунт">
+    <div class="auth__box">
+      <div class="logo">HYDRA</div>
+      <div class="auth__tabs">
+        <button type="button" class="auth__tab is-active" data-mode="login">Вход</button>
+        <button type="button" class="auth__tab" data-mode="register">Регистрация</button>
+      </div>
+      <form id="authForm" novalidate>
+        <label>Имя
+          <input id="authName" type="text" maxlength="20" autocomplete="username" required>
+        </label>
+        <label>Пароль
+          <input id="authPass" type="password" autocomplete="current-password" required>
+        </label>
+        <label id="confirmRow" hidden>Повторите пароль
+          <input id="authPass2" type="password" autocomplete="new-password">
+        </label>
+        <p id="authError" class="auth__error" role="alert"></p>
+        <button id="authSubmit" class="btn btn--primary btn--wide">Войти</button>
+      </form>
+    </div>
+  </section>
+  <header class="header">
+    <div class="container header__row">
+      <a href="#" class="logo">HYDRA</a>
+      <input id="search" class="search" type="search" placeholder="Найти товар, бренд или продавца" aria-label="Поиск">
+      <button id="cartBtn" class="btn btn--ghost cart-btn" aria-label="Открыть корзину">
+        Корзина <span id="cartCount" class="badge">0</span>
+      </button>
+      <span id="userName" class="user"></span>
+      <button id="logout" class="btn btn--ghost">Выйти</button>
+    </div>
+  </header>
+  
+  <main class="container">
+    <section class="banner">
+      <h1>Товары от проверенных продавцов</h1>
+      <p>Электроника, одежда, дом и спорт. Доставка от 1 дня.</p>
+    </section>
+
+    <section class="toolbar">
+      <div id="chips" class="chips" role="tablist" aria-label="Категории"></div>
+      <label class="sort">Сортировка
+        <select id="sort">
+          <option value="popular">По популярности</option>
+          <option value="price-asc">Сначала дешёвые</option>
+          <option value="price-desc">Сначала дорогие</option>
+          <option value="rating">По рейтингу</option>
+        </select>
+      </label>
+    </section>
+
+    <p id="found" class="found"></p>
+    <section id="grid" class="grid" aria-live="polite"></section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__row">
+      <span>© 2026 HYDRA</span>
+      <span>Помощь</span>
+      <span>Стать продавцом</span>
+      <span>Доставка и оплата</span>
+    </div>
+  </footer>
+
+  <div id="overlay" class="overlay" hidden></div>
+  <aside id="drawer" class="drawer" aria-hidden="true" aria-label="Корзина">
+    <div class="drawer__head">
+      <h2>Корзина</h2>
+      <button id="closeCart" class="btn btn--ghost" aria-label="Закрыть корзину">✕</button>
+    </div>
+    <div id="cartItems" class="drawer__items"></div>
+    <div class="drawer__foot">
+      <div class="total"><span>Итого</span><strong id="cartTotal">$0</strong></div>
+      <button id="checkout" class="btn btn--primary btn--wide">Оформить заказ</button>
+    </div>
+  </aside>
+
+  <div id="toast" class="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
